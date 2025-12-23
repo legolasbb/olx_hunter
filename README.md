@@ -20,6 +20,27 @@ Whitlist contains reputable brands names to help us discard low quality products
 Scoring contains pairs of product attributes and score assigned for the atribute. For example premium models, special technologies used.
 ### How words are compared?
 Words are compared using levenshtein distance which allows to compare inflected words (with the same meaning) or ignore speling mistakes. 
-For example in polish words "uszkodzone" and "uszkodzona" have almost the same meaing (damaged). 
+For example in Polish words "uszkodzone" and "uszkodzona" have almost the same meaing (damaged). 
 Normal words comparing would consider these words different, thus we use levenshtein distance.
-### Adjusting constants for other product categiories
+## Adjusting constants for other product categiories
+Adjusting for other categorie can be done without almost any coding knowledge and understanding of offer finding system. Only this needed is changing constants in blaclist, whitelist and scoring. 
+- In blaclist you should put all words that would make offer not attractive for you. For phones it could be "pekniety" (cracked), "zablokowany" (locked) etc. 
+It is good idea to also filter offers that are not phones, for example phone service/exchange
+- Whitelist should contain all words that will allow you to filter trash/low quality offers. For phones category you could put brand names there (apple, samsung, ...0
+- Scoring should contain all atributes that increase value of product. For example in phones category - models (17 - for iphones, galaxy - for samsung), memory (256gb, 512gb), and other model attributes (pro, max, mini). You can experiment with scores that you assign for attributes, so you get best results.
+You may also need to alter base_price and price_for_point constants since in different categories max prices will differ.
+- Last thing that needs to be adjusted is url in scrapper.py. You should change it to link to desirable category in Olx.
+  
+After this changes offer finder should work for any category.
+## How to run
+First you will need to install needed python packages. To do this run\
+`pip install -r requirements.txt`
+in your terminal.\
+Then you will need to compile cpp files. To do this run \
+`g++ main.cpp analyze_offer.cpp utils.cpp -o main`\
+After than you can run scraper to get offers from olx\
+`python scraper.py`\
+Disclaimer: This script is intended for research and educational purposes only. Always respect the website's robots.txt and terms of service. Unauthorized scraping may violate the website's policies.\
+And listing analyzer\
+`./main`\
+After all of the steps links to best offers will be saved in `offers.txt` file.
