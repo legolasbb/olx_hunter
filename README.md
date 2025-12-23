@@ -33,14 +33,47 @@ You may also need to alter base_price and price_for_point constants since in dif
   
 After this changes offer finder should work for any category.
 ## How to run
-First you will need to install needed python packages. To do this run\
-`pip install -r requirements.txt`
-in your terminal.\
-Then you will need to compile cpp files. To do this run \
-`g++ main.cpp analyze_offer.cpp utils.cpp -o main`\
-After than you can run scraper to get offers from olx\
-`python scraper.py`\
-Disclaimer: This script is intended for research and educational purposes only. Always respect the website's robots.txt and terms of service. Unauthorized scraping may violate the website's policies.\
-And listing analyzer\
-`./main`\
-After all of the steps links to best offers will be saved in `offers.txt` file.
+### Prerequisites
+- **C++ compiler** (GCC/Clang) supporting C++17
+- **CMake** (Version 4.2.1+)
+- **Python** (Version 3.8+)
+
+### Installation and build
+### Python enviroment setup
+It is highly recommended to use virtual enviroment.
+```bash
+  # Create virtual enviroment
+  python3 -m venv venv
+
+  # Activate virtual enviroment
+  source /venv/bin activate
+
+  # Install required packages
+  pip3 install -r requirements.txt
+```
+### C++ listings analyser build
+```bash
+  #Create build directory
+  mkdir -p build
+
+  #set location of CMakeLists.txt file
+  cd build
+  cmake ..
+
+  #Build project
+  make
+
+  #return to main directory
+  cd ..
+```
+### Running scrapper and listings analyzer
+```bash
+  # Run scraper
+  # Disclaimer:
+  # This script is intended for research and educational purposes only. Always respect the website's robots.txt and terms of service. Unauthorized scraping may violate the website's policies.
+  python3 scraper.py
+
+  # Runnging listing analyser
+  ./build/olx_analyser
+```
+After all steps links to best listings will be saved in offers.txt file.
