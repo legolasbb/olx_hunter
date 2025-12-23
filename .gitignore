@@ -1,0 +1,6 @@
+#ignoring olx data
+ski_data.json
+offers.txt
+
+#ignoring local enviroment
+venv
