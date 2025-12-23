@@ -5,3 +5,4 @@ offers.txt
 #ignoring local enviroment
 venv
 build
+.DS_Store
