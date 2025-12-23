@@ -12,6 +12,7 @@
 
 #include "utils.hpp"
 #include "nlohmann/json.hpp"
+#include "constants.hpp"
 
 using json = nlohmann::json;
 
@@ -85,8 +86,6 @@ bool is_offer(const int price, const int score){
     if(score<10 || price < 100){
         return false;
     }
-    constexpr int base_price = 100;
-    constexpr int price_for_point = 15;
 
     const int max_price = base_price + price_for_point*score;
     

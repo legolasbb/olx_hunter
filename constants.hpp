@@ -12,6 +12,10 @@ struct score_assigment{
     int score{};
 };
 
+constexpr int base_price {100};
+constexpr int price_for_point  {15};
+
+
 /// A list of forbidden words that should be excluded from the search.
 const std::vector<std::string> BLACKLIST = {
     // Category 1 - damage
